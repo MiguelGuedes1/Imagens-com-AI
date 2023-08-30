@@ -2,6 +2,7 @@ import express from "express"
 import * as dotenv from "dotenv"    //  Modulo/biblioteca utilizado para carregar variáveis de ambiente a partir de um arquivo .env em sua aplicação Node.js
 import cors from "cors"   //  Modulo de segurança do navegador que controla e permite solicitações entre origens diferentes em aplicações web.
 
+import connectDB from "./mongodb/connect.js"
 
 //CONFIGURAÇÕES BASICAS DO SERVIDOR
 dotenv.config()    // Funçao que permite usar as variaveis de ambiente criadas no ficheiro .env
@@ -17,9 +18,19 @@ app.get('/', async (req,res) =>  {
 })
 
 const iniciar_servidor = async () => {
-    app.listen(8080, () => {
-        console.log("Servidor iniciado correctamente na porta http://localhost:8080")
-    })
+
+    try {
+        connectDB(process.env.MONGODB_URL)
+        app.listen(8080, () => {
+            console.log("Servidor iniciado correctamente na porta http://localhost:8080")
+        })
+
+    } catch (error) {
+        console.log("Ups ocorreu o seguinte erro:",error)
+    }
+
+
+    
 }
 
 iniciar_servidor()
