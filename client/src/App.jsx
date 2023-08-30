@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { logo_1 } from './assets'; // Importe a imagem do arquivo index.js
-import { Home, Criar_um_post } from './pages';
+import { Pagina_principal, Criar_um_post } from './paginas_da_app';
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
 
         <Routes>
 
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Pagina_principal />} />
           <Route path="/create-post" element={<Criar_um_post />} />
 
 

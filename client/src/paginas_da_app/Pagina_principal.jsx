@@ -1,7 +1,7 @@
 // Pagina para principal da app (HomePage)
 
 import React, { useState, useEffect } from 'react'
-import { Card, Campo_de_formulario, Botao_de_download } from "../components"
+import { Card, Campo_de_formulario, Botao_de_download } from "../componentes_uteis"
 
 
 
@@ -20,7 +20,7 @@ const RenderCards = ({ data, title }) => {
 
 
 
-const Home = () => {
+const Pagina_principal = () => {
 
     const [loading, setLoading] = useState(false)
     const [allPosts, setAllPosts] = useState([null])
@@ -89,6 +89,6 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Pagina_principal
 
 

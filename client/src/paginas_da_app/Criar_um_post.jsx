@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { preview } from '../assets'
 import { getRandomPrompt } from '../funcoesUteis'
-import { Campo_de_formulario, Botao_de_download } from '../components'
+import { Campo_de_formulario, Botao_de_download } from '../componentes_uteis'
 
 const Criar_um_post = () => {
 
