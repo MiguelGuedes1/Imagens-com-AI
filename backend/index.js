@@ -3,12 +3,18 @@ import * as dotenv from "dotenv"    //  Modulo/biblioteca utilizado para carrega
 import cors from "cors"   //  Modulo de segurança do navegador que controla e permite solicitações entre origens diferentes em aplicações web.
 
 import connectDB from "./mongodb/connect.js"
+import postRoutes from "./routes/postRoutes.js"
+import imagens_AI from "./routes/imagens_AI.js"
 
+    
 //CONFIGURAÇÕES BASICAS DO SERVIDOR
 dotenv.config()    // Funçao que permite usar as variaveis de ambiente criadas no ficheiro .env
 const app = express()
 app.use(cors())
 app.use(express.json({ limit:'50mb' })) // analisar o corpo das solicitações HTTP como JSON. O parâmetro limit define o tamanho máximo do corpo da solicitação em 50mb
+
+app.use('/api/v1/post',postRoutes)
+app.use('/api/v1/imagens_AI',imagens_AI)
 
 
 // CONFIGURAÇOES DE ROTAS

@@ -2,7 +2,7 @@ import React from 'react';
 import { preview } from '../assets';
 
 const Campo_de_formulario = ({ labelName, type, name, placeholder, value, handleChange, isSurpriseMe, handleSurpriseMe }) => {
-    console.log('FormField value:', value); // Verifique o valor que está sendo passado
+
 
 
 

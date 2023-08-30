@@ -19,9 +19,34 @@ const Criar_um_post = () => {
     const [gerar_imagem, setGerarImagem] = useState(false)
     const [loading, setLoading] = useState(false)
 
-    const generateImage = () => {
 
+
+    const generateImage = async () => {
+        if (form.prompt) {
+            try {
+                setGerarImagem(true)
+                const response = await fetch('http://localhost:8080/api/v1/imagens_AI', {
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify({ prompt: form.prompt }),
+                })
+
+                const data = await response.json()
+
+                setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` })
+            } catch (error) {
+                alert(error)
+            } finally {
+                setGerarImagem(false)
+            }
+        } else {
+            alert("Por favor insira um prompt ou clique no botao Surpreeda-me")
+        }
     }
+
+
 
     const handleSubmit = () => {
 
@@ -153,6 +178,11 @@ const Criar_um_post = () => {
 }
 
 export default Criar_um_post
+
+
+
+
+
 
 
 
