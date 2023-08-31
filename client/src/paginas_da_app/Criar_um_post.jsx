@@ -31,11 +31,19 @@ const Criar_um_post = () => {
                         'Content-type': 'application/json'
                     },
                     body: JSON.stringify({ prompt: form.prompt }),
-                })
+                });
+
+                console.log('API response:', response)
 
                 const data = await response.json()
 
-                setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` })
+                console.log("A foto em formato json é a seguinte: ", data)
+
+
+                setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo.data[0].b64_json}` })
+
+
+
             } catch (error) {
                 alert(error)
             } finally {
@@ -44,7 +52,7 @@ const Criar_um_post = () => {
         } else {
             alert("Por favor insira um prompt ou clique no botao Surpreeda-me")
         }
-    }
+    };
 
 
 
@@ -104,8 +112,8 @@ const Criar_um_post = () => {
                         handleSurpriseMe={handleSurpriseMe}
                     />
 
-                    <div className="relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-64 p-3 h-64 
-                    flex justify-center itens-center">
+                    <div className="relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-80 p-3 h-80
+                    flex justify-center itens-center">         {/* Div onde aparece a imagem que o utilizador cria */}
 
                         {form.photo ? (
                             <img
