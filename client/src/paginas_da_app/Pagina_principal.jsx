@@ -2,6 +2,11 @@
 
 import React, { useState, useEffect } from 'react'
 import { Card, Campo_de_formulario, Botao_de_download } from "../componentes_uteis"
+import { preview, video_fundo } from '../assets'
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+
+//css 
+import '../index.css';
 
 
 
@@ -25,6 +30,9 @@ const Pagina_principal = () => {
     const [loading, setLoading] = useState(false)
     const [allPosts, setAllPosts] = useState([])
     const [searchText, setSearchText] = useState('')
+
+    const [searchedResults, setSearchedResults] = useState(null)
+    const [searchTimeout, setSearchTimeout] = useState(null)
 
     useEffect(() => {
 
@@ -57,27 +65,95 @@ const Pagina_principal = () => {
 
     }, [])
 
+    const pesquisar_por_um_prompt = (e) => {
+
+        clearTimeout(searchTimeout)
+
+        setSearchText(e.target.value)
+
+        setSearchTimeout(
+            setTimeout(() => {
+
+                const searchResults = allPosts.filter((item) => item.name.toLowerCase().includes(searchText.toLocaleLowerCase()) ||
+                    item.prompt.toLowerCase().includes(searchText.toLowerCase()))
+
+                setSearchedResults(searchResults)
+
+
+            }, 500)
+        )
+
+    }
+
+
+
+
+
 
 
 
     return (
 
-        <section className="max-w-7xl mx-auto ">
+        <section className="flex flex-col">
 
-            <div>
-                <h1 className="font-extrabold text-[#222328] text-[32px] ">Posts da Comunidade</h1>
-                <p className="mt-2 text-[#666e75] text-[14.5px] max-w-[500px]">
-                    Navegue por imagens fantasticas criadas por AI
-                </p>
+            <div className="video_fundo">
+
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '60%',
+                        objectFit: 'cover',
+                        zIndex: -1,
+                    }}
+                >
+                    <source src={video_fundo} type="video/mp4" />
+                </video>
+
+                <div className="titulos">
+                    <h1 className=" mt-5 font-extrabold text-[#8B008B] text-[40px] animate-fade  xs:text-[80px]">PixelGenius</h1>
+
+
+
+                    <p className=" text-[#8B008B] text-[10px]  xs:text-[18px]  ">
+                        Navegue por imagens fantasticas criadas por AI
+                    </p>
+
+                    <Link to="create-post"
+                        className="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 shadow-lg shadow-pink-500/50 dark:shadow-lg dark:shadow-pink-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+
+                    >
+                        Cria um post
+                    </Link>
+                </div>
+
+
+
+
             </div>
 
 
-            <div className="mt-16">
-                <Campo_de_formulario />
-            </div>
 
 
-            <div className="mt-10">
+
+
+            <div className=" px-20">
+
+                <div className="mt-8 mb-8 flex justify-center items-center text-center px-20">
+                    <Campo_de_formulario
+                        type="text"
+                        name="text"
+                        placeholder="Procure por um prompt ou por criador"
+                        value={searchText}
+                        handleChange={pesquisar_por_um_prompt}
+
+                    />
+                </div>
 
                 {loading ? (                                                       /* Usar operador ternario para verificar se esta a ocorrer um Loading  */
                     <div className="flex justify-center itens-center">
@@ -97,7 +173,7 @@ const Pagina_principal = () => {
                         <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap -3 ">
                             {searchText ? (
                                 <RenderCards
-                                    data={[]}
+                                    data={searchedResults}
                                     title="Sem resultados para a pesquisa"
                                 />
                             ) : (
@@ -116,10 +192,11 @@ const Pagina_principal = () => {
 
             </div>
 
+
+
+
         </section>
-    )
-}
+    );
+};
 
-export default Pagina_principal
-
-
+export default Pagina_principal;

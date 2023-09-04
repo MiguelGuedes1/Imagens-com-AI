@@ -36,8 +36,8 @@ const Campo_de_formulario = ({ labelName, type, name, placeholder, value, handle
                 value={value}
                 onChange={handleChange}
                 required
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#4649ff] focus:border-[#4649ff] outline-none p-3"
-                style={{ width: '100%' }}
+                className=" px-5 block w-full min-w-[350px] p-4 pl-10 text-sm text-black border border-gray-300 rounded-lg bg-transparent focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600  dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                style={{ width: '40%' }}
             />
 
         </div>

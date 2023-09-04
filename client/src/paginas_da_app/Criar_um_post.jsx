@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { preview } from '../assets'
 import { getRandomPrompt } from '../funcoesUteis'
-import { Campo_de_formulario, Botao_de_download } from '../componentes_uteis'
+import { Campo_de_formulario, Botao_de_download, } from '../componentes_uteis'
 
 const Criar_um_post = () => {
 
@@ -116,11 +116,12 @@ const Criar_um_post = () => {
 
     return (
 
-        <section className="max-w-7xl mx-auto">
+        <section className="max-w-7xl mx-auto mr-7 ml-7 ">
+
 
             <div>
-                <h1 className="font-extrabold text-[#222328] text-[32px] ">Crie um Post</h1>
-                <p className="mt-2 text-[#666e75] text-[14.5px] max-w-[500px]">
+                <h1 className="font-extrabold text-[#222328] text-[32px]  ">Crie um Post</h1>
+                <p className=" text-[#666e75] text-[14.5px] max-w-[500px]">
                     Crie imagens fantasticas geradas por inteligência artificial
                 </p>
             </div>
@@ -136,6 +137,7 @@ const Criar_um_post = () => {
                         placeholder="Digite o seu nome "
                         Value={form.name}
                         handleChange={handleChange}
+
                     />
 
                     <Campo_de_formulario
@@ -181,7 +183,7 @@ const Criar_um_post = () => {
                     <button
                         type="button"
                         onClick={generateImage}
-                        className="text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                        className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
 
                     >
 
@@ -202,7 +204,7 @@ const Criar_um_post = () => {
 
                     <button
                         type='submit'
-                        className="mt-3 text-white bg-[#6469ff] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                        className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-3"
                     >
                         {loading ? (
                             "A partilhar a sua imagem . . ."

@@ -6,7 +6,56 @@
 
 * {
   font-family: 'Poppins', sans-serif;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
 }
+
+.video_fundo {
+  height: 60vh;
+  padding: 0.4rem 0rem;
+}
+
+.titulos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+}
+
+
+
+
+
+
+
+
+@keyframes fade {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 4;
+  }
+}
+
+.animate-fade {
+  animation: fade 6s linear infinite;
+  /* Ajuste a duração conforme desejado */
+}
+
+
+
+
+
+
+
+
+
 
 @media screen and (min-width: 480px) {
   .card:nth-child(7n + 1) {
