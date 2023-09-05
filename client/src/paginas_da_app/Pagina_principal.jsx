@@ -2,13 +2,19 @@
 
 import React, { useState, useEffect } from 'react'
 import { Card, Campo_de_formulario, Botao_de_download } from "../componentes_uteis"
-import { preview, video_fundo } from '../assets'
+import { preview, video_fundo, sem_imagem } from '../assets'
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 
 //css 
 import '../index.css';
 
 
+const estiloImagemCentralizada = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '60vh',
+};
 
 const RenderCards = ({ data, title }) => {
     if (data?.length > 0) {
@@ -16,9 +22,8 @@ const RenderCards = ({ data, title }) => {
     }
 
     return (
-        <h2 className="mt-5 font bold text-[#6449ff] text-medium uppercase">
-            {title}
-        </h2>
+        <img src={sem_imagem} alt="sem imagem" className='sem_imagem' />
+
     )
 }
 
@@ -80,7 +85,7 @@ const Pagina_principal = () => {
                 setSearchedResults(searchResults)
 
 
-            }, 500)
+            }, 100)
         )
 
     }
@@ -163,8 +168,8 @@ const Pagina_principal = () => {
                     <>
                         {searchText && (
                             <h2 className="font medium text -[#666e75] text -xl mb3">
-                                Resultados para <span className="text-[#222328]">
-                                    {searchText}
+                                <span className="text-[#222328]">
+
                                 </span>
                             </h2>
                         )}
@@ -174,12 +179,13 @@ const Pagina_principal = () => {
                             {searchText ? (
                                 <RenderCards
                                     data={searchedResults}
-                                    title="Sem resultados para a pesquisa"
+
                                 />
                             ) : (
                                 <RenderCards
                                     data={allPosts}
                                     title="Nenhum post criado ainda"
+
                                 />
                             )
 

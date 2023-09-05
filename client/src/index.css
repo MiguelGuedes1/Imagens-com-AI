@@ -24,6 +24,49 @@
   gap: 4rem;
 }
 
+.sem_imagem {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+}
+
+.fundo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, rgb(167, 11, 99), darkblue);
+  height: 150vh;
+  width: 100%;
+
+
+}
+
+.Home {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  font-size: 2rem;
+  transition: transform 0.5s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.Home:hover {
+  transform: scale(1.2);
+
+}
+
+
 
 
 
