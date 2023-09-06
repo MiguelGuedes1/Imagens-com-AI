@@ -219,7 +219,7 @@ const Criar_um_post = () => {
                         {loading ? (
                             "A partilhar a sua imagem . . ."
                         ) : (
-                            "Partilhar imagem"
+                            "Partilhar imagem na pagina principal"
                         )}
 
                     </button>
