@@ -30,7 +30,7 @@ const Criar_um_post = () => {
         if (form.prompt) {
             try {
                 setGerarImagem(true)
-                const response = await fetch('http://localhost:8080/api/v1/imagens_AI', {
+                const response = await fetch('https://pixelgenius.onrender.com/api/v1/imagens_AI', {
                     method: 'POST',
                     headers: {
                         'Content-type': 'application/json'
@@ -71,7 +71,7 @@ const Criar_um_post = () => {
             setLoading(true)
 
             try {
-                const response = await fetch('http://localhost:8080/api/v1/post', {
+                const response = await fetch('https://pixelgenius.onrender.com/api/v1/post', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
